@@ -1,0 +1,44 @@
+<button id="myBtn" {{action "openModel"}}>Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close" {{action "closeModel"}}>&times;</span>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            {{!-- <input type="checkbox" class="checkAll" name="checkAll" /> --}}
+          </th>
+          <th>CSV HeaderName</th>
+          <th>Field Name</th>
+          <th>Choices</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {{#each data as |row|}}
+          <tr>
+            <td>
+                
+
+                {{!-- {{input type="checkbox" checked=row.checked onChange=(action "udpateChecked")}}</td> --}}
+                {{input type='checkbox' id=row.id change=(action "udpateChecked" value="target")}}</td>
+
+            <td>{{row.headerName}}</td>
+            <td>{{row.fieldName}}</td>
+            <td>{{row.choices}}</td>
+          </tr>
+        {{/each}}
+
+      </tbody>
+    </table>
+    <br><br><br>
+   <button id="submit" {{action "submitData"}}>Submit</button>
+
+    {{yield}}
+  </div>
+</div>
